@@ -1,0 +1,10 @@
+www.comolaundryth.com
+
+route {
+    reverse_proxy app:3000
+    file_server
+}
+
+tls {
+    on_demand
+}

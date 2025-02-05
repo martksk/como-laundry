@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 function Franchisepage() {
   const benefits = [
@@ -9,6 +10,10 @@ function Franchisepage() {
     "Online Management System ช่องทางสแกนแลกรับเงินผ่านระบบ QR Payment เพื่อเพิ่มความสะดวกสบายของผู้ลงทุน และลูกค้า",
   ];
   return (
+    <>
+    <Head>
+      <title>Franchise</title>
+    </Head>
     <div className="w-full p-6 md:p-10 lg:p-14">
       <div className="flex flex-col justify-center items-center text-center space-y-6 md:space-y-8 lg:space-y-10">
         <h1 className="font-semibold text-2xl md:text-3xl lg:text-4xl">
@@ -28,6 +33,7 @@ function Franchisepage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
