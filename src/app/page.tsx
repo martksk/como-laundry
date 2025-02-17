@@ -4,11 +4,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import como1 from "@/assets/image/como1.svg";
-import como2 from "@/assets/image/como2.svg";
-import como3 from "@/assets/image/como3.svg";
-import como4 from "@/assets/image/como4.svg";
-import como5 from "@/assets/image/como5.svg";
+import como1 from "@/assets/image/como1.png";
+import como2 from "@/assets/image/como2.png";
+import como3 from "@/assets/image/como3.png";
+import como4 from "@/assets/image/como4.png";
+import como5 from "@/assets/image/como5.png";
 import Image from "next/image";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -65,7 +65,7 @@ export default function Home() {
         <section className="w-full">
           <div className="flex flex-col items-center justify-center h-96 gap-y-6 px-4 md:px-8 lg:px-16">
             <h1 className="text-3xl font-semibold text-center">
-              MAKE TO BETTER TO
+              MAKE BETTER TO
             </h1>
             <h1 className="text-5xl font-bold text-center">FUTURE</h1>
             <span className="text-center text-base md:text-xl lg:text-2xl">
@@ -88,14 +88,18 @@ export default function Home() {
 
         {/* ComoVision */}
         <div className="bg-como3 w-full h-screen bg-cover bg-center flex items-end">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-20 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-20 w-full md:h-1/4 items-center ">
             {comoVision.map((vision, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center text-center"
               >
-                <h1 className="text-3xl font-bold mb-2">{vision.title}</h1>
-                <span>{vision.description}</span>
+                <h1 className="text-2xl md:text-2xl lg:text-3xl font-bold mb-2">
+                  {vision.title}
+                </h1>
+                <span className="text-lg md:text-base lg:text-lg">
+                  {vision.description}
+                </span>
               </div>
             ))}
           </div>
@@ -124,7 +128,7 @@ export default function Home() {
 
         {/* FAQ */}
         <section className="w-full py-10">
-          <div className="flex flex-col gap-y-10 justify-center w-full items-center px-4 md:px-8 lg:px-16">
+          <div className="flex flex-col gap-y-6 justify-center w-full items-center px-4 md:px-8 lg:px-16">
             <h1 className="text-4xl md:text-6xl lg:text-9xl font-bold text-blue-900">
               FAQ
             </h1>
@@ -141,7 +145,7 @@ export default function Home() {
                         {faq.question}
                       </h1>
                     </AccordionTrigger>
-                    <AccordionContent className="text-lg md:text-xl">
+                    <AccordionContent className="text-lg md:text-xl md:py-4 lg:py-8">
                       <h1 className="text-blue-900 mb-2 font-semibold w-full">
                         คำตอบ :{" "}
                         <span className="text-black font-medium">
