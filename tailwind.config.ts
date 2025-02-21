@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mitr: ["mitr", "sans-serif"], // Rename "sans" to "mitr"
+      },
       backgroundImage: {
         como3: "url('/como3.jpg')",
       },
