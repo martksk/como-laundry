@@ -42,7 +42,6 @@ export default function Home() {
     <>
       <Head>
         <title>Como Laundry</title>
-        <link rel="stylesheet" href="https://use.typekit.net/wip6xqd.css" />
       </Head>
       <div className="w-full pb-10">
         <div className="w-full">
@@ -65,11 +64,13 @@ export default function Home() {
         </div>
         <section className="w-full">
           <div className="flex flex-col items-center justify-center h-96 gap-y-6 px-4 md:px-8 lg:px-16">
-            <h1 className="text-3xl font-semibold text-center">
+            <h1 className="text-3xl font-semibold text-center text-[#052968]">
               MAKE TO BETTER
             </h1>
-            <h1 className="text-5xl font-bold text-center">FUTURE</h1>
-            <span className="text-center text-base md:text-xl lg:text-2xl font-mitr">
+            <h1 className="text-5xl font-bold text-center text-[#052968]">
+              FUTURE
+            </h1>
+            <span className="text-center text-base md:text-xl lg:text-2xl text-[#052968]">
               โคโม่ ใช้เครื่องซักผ้า แบรนด์ Yamamoto
               เป็นเทคโนโลยีเครื่องซักผ้าที่ดีที่สุดในญี่ปุ่น
               เป็นเครื่องซัก+อบในเครื่องเดียวกันนำเข้าเป็นเจ้าแรก
