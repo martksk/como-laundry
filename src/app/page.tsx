@@ -3,12 +3,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
-import como1 from "@/assets/image/como1.png";
-import como2 from "@/assets/image/como2.png";
-import como3 from "@/assets/image/como3.png";
-import como4 from "@/assets/image/como4.png";
-import como5 from "@/assets/image/como5.png";
+import banner1 from "@/assets/image/banner1.png";
+import banner2 from "@/assets/image/banner2.png";
+import modelshop from "@/assets/image/modelshop.png";
 import Image from "next/image";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import Head from "next/head";
+import ComoLaundryScreen from "@/components/FranchiseCard";
 
 export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
@@ -34,9 +35,10 @@ export default function Home() {
     Rotation_speedData,
     diameterData,
     faqData,
+    franchiseData,
   } = useHomeContext();
 
-  const images = [como1, como2, como3, como4, como5];
+  const images = [banner1, banner2];
 
   return (
     <>
@@ -44,17 +46,17 @@ export default function Home() {
         <title>Como Laundry</title>
       </Head>
       <div className="w-full pb-10">
-        <div className="w-full">
+        <div className="w-full mb-10">
           <Carousel className="w-full" plugins={[plugin.current]}>
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative w-full h-64 md:h-96 lg:h-screen">
+                  <div className="relative w-[1920px] h-[980px] md:h-96 lg:h-screen">
                     <Image
                       src={image}
                       alt="Como"
                       layout="fill"
-                      objectFit="cover"
+                      objectFit="contain"
                     />
                   </div>
                 </CarouselItem>
@@ -62,25 +64,73 @@ export default function Home() {
             </CarouselContent>
           </Carousel>
         </div>
+
         <section className="w-full">
-          <div className="flex flex-col items-center justify-center h-96 gap-y-6 px-4 md:px-8 lg:px-16">
-            <h1 className="text-3xl font-semibold text-center text-[#052968]">
-              MAKE TO BETTER
-            </h1>
-            <h1 className="text-5xl font-bold text-center text-[#052968]">
-              FUTURE
-            </h1>
-            <span className="text-center text-base md:text-xl lg:text-2xl text-[#052968]">
-              โคโม่ ใช้เครื่องซักผ้า แบรนด์ Yamamoto
-              เป็นเทคโนโลยีเครื่องซักผ้าที่ดีที่สุดในญี่ปุ่น
-              เป็นเครื่องซัก+อบในเครื่องเดียวกันนำเข้าเป็นเจ้าแรก
-              และมุ่งเน้นความสะดวกสบายให้กับลูกค้า ใช้เทคโนโลยีที่ทันสมัยที่สุด
-              และมีคุณภาพ สร้างผลลัพธ์ทำให้เกิด passive income
-            </span>
+          <div className="flex flex-col items-center justify-center h-96 gap-y-6 px-4 md:px-8 lg:px-16 mb-20">
+            <div className="flex items-center">
+              <div className="w-1/2">
+                <h1 className="text-3xl font-semibold text-center text-[#052968]">
+                  MAKE TO BETTER
+                </h1>
+                <h1 className="text-5xl font-bold text-center text-[#052968] my-5">
+                  FUTURE
+                </h1>
+                <span className="flex text-center text-base md:text-xl lg:text-2xl text-[#052968]">
+                  โคโม่ (COMO) มีทั้งหมด 15 สาขา และกำลังขยายเพิ่มเติมอีก 6
+                  สาขาทั่วประเทศไทย ทุกสาขาใช้เครื่องซักผ้าจาก Yamamoto
+                  แบรนด์เครื่องซักผ้า ซัก-อบ ในเครื่องเดียวที่ดีที่สุดจากญี่ปุ่น
+                  โดย COMO เป็นผู้นำเข้าเป็นเจ้าแรกของประเทศไทย
+                  เพื่อมุ่งเน้นให้ลูกค้าใช้งานได้อย่างสะดวก สบาย
+                  พร้อมทั้งยังการันตีคุณภาพความคงทนที่ช่วยสร้างรายได้ที่มั่นคงให้กับเจ้าของเฟรนไชส์
+                </span>
+              </div>
+              <div className="flex w-1/2 justify-center">
+                <Image src={modelshop} alt="Image" width={500} height={500} />
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Franchise */}
+        <div className="bg-stone-100">
+          <div className="w-full flex justify-center">
+            <h1 className="text-4xl md:text-6xl lg:text-5xl font-bold text-blue-900 mt-20 mb-10">
+              สาขาต่างๆของ Como Laundry
+            </h1>
+          </div>
+          <div className="w-full pt-10 py-32 px-40">
+            <Carousel
+              className="w-full relative"
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+            >
+              <div className="max-w-full mx-12">
+                {" "}
+                {/* Add margin space for the arrows */}
+                <CarouselContent className="w-full -ml-2">
+                  {franchiseData.map((franchise, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="md:basis-1/3 flex-shrink-0"
+                    >
+                      <ComoLaundryScreen machines={[franchise]} />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </div>
+
+              {/* Position arrows outside but still within Carousel component */}
+              <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 h-10 w-10" />
+              <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 h-10 w-10" />
+            </Carousel>
+          </div>
+        </div>
+        {/* Franchise */}
+
         {/* Video */}
-        <div className="w-full flex justify-center mt-8">
+        <div className="w-full flex justify-center">
           <video className="w-full" autoPlay loop muted>
             <source src="/video/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -90,7 +140,7 @@ export default function Home() {
 
         {/* ComoVision */}
         <div className="bg-como3 w-full h-screen bg-cover bg-center flex items-end">
-          <div className="grid grid-cols-1 md:grid-cols-3  gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-20 w-full md:h-1/4 items-center ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-20 w-full md:h-1/4 items-center">
             {comoVision.map((vision, index) => (
               <div
                 key={index}
@@ -149,7 +199,7 @@ export default function Home() {
                     </AccordionTrigger>
                     <AccordionContent className="text-lg md:text-xl md:py-4 lg:py-8">
                       <h1 className="text-blue-900 mb-2 font-semibold w-full">
-                        คำตอบ :{" "}
+                        คำตอบ:{" "}
                         <span className="text-black font-medium">
                           {faq.answer}
                         </span>

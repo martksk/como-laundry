@@ -9,6 +9,7 @@ import {
   Rotation_speedData,
   diameterData,
   faqData,
+  franchiseData,
 } from "@/data/home";
 import { ITable } from "@/interface/Table";
 import { IFaq } from "@/interface/faq";
@@ -19,8 +20,15 @@ type HomeContextType = {
   tableData3: ITable[];
   WashingDrumData: ITable[];
   Rotation_speedData: ITable[];
-  diameterData : ITable[];
+  diameterData: ITable[];
   faqData: IFaq[];
+  franchiseData: {
+    weight: number[];
+    count: number[];
+    namefr: string;
+    province: string;
+    img: number;
+  }[];
 };
 
 const HomeContext = createContext<HomeContextType | null>(null);
@@ -44,6 +52,7 @@ export const HomeProvider: React.FC<{ children: React.ReactNode }> = ({
     Rotation_speedData,
     diameterData,
     faqData,
+    franchiseData,
   };
 
   return <HomeContext.Provider value={value}>{children}</HomeContext.Provider>;
