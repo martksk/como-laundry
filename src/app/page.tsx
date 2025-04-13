@@ -45,18 +45,18 @@ export default function Home() {
       <Head>
         <title>Como Laundry</title>
       </Head>
-      <div className="w-full pb-10">
-        <div className="w-full mb-10">
+      <div className="w-full">
+        <div className="w-full">
           <Carousel className="w-full" plugins={[plugin.current]}>
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative w-[1920px] h-[980px] md:h-96 lg:h-screen">
+                  <div className="relative w-full md:h-96 lg:h-screen">
                     <Image
                       src={image}
                       alt="Como"
-                      layout="fill"
-                      objectFit="contain"
+                      fill
+                      className="object-fill"
                     />
                   </div>
                 </CarouselItem>
