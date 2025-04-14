@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import banner1 from "@/assets/image/banner1.png";
 import banner2 from "@/assets/image/banner2.png";
+import washingmachine from "@/assets/image/WashingMachine.png";
 import modelshop from "@/assets/image/modelshop.png";
 import Image from "next/image";
 import { useRef } from "react";
@@ -128,6 +129,16 @@ export default function Home() {
           </div>
         </div>
         {/* Franchise */}
+
+        {/* Washing Machine */}
+        <div className="bg-stone-100 flex justify-center items-center">
+          <Image
+            src={washingmachine}
+            alt={`washing machine`}
+            className="rounded-t-2xl w-[1300px] pb-20"
+          />
+        </div>
+        {/* Washing Machine */}
 
         {/* Video */}
         <div className="w-full flex justify-center">
