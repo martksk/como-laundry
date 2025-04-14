@@ -37,10 +37,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className=" jun-layout">
-          <header className="jun-header jun-header-h-[160px]">
-            <Navbar />
-          </header>
+        <div className="jun-layout">
+          <Navbar />
+          <div className="h-[160px]"></div> {/* Spacer for fixed navbar */}
           <main className="jun-content">
             <HomeProvider>{children}</HomeProvider>
           </main>
