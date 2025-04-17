@@ -87,9 +87,6 @@ export default function Home() {
         {
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-            Origin: "https://www.comolaundryth.com",
           },
         }
       );
