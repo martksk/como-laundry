@@ -7,7 +7,7 @@
 #     file_server
 # }
 
-https://www.comolaundryth.com {
+www.comolaundryth.com {
     route {
         # Proxy form requests to the backend (port 3003)
         reverse_proxy /form/* localhost:3003
