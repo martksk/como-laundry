@@ -81,15 +81,11 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post(
-        "https://www.comolaundryth.com:3003/form/sendForm",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("/form/sendForm", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 200) {
         alert("ส่งข้อมูลสำเร็จ เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด");
