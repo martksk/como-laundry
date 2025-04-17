@@ -7,13 +7,13 @@
 #     file_server
 # }
 
-www.comolaundryth.com {
+https://www.comolaundryth.com {
     route {
         # Proxy form requests to the backend (port 3003)
-        reverse_proxy /form/* localhost:3003
+        reverse_proxy /form/* app:3003
 
         # Proxy everything else to the frontend (port 3000)
-        reverse_proxy /* localhost:3000
+        reverse_proxy /* app:3000
 
         file_server
     }
