@@ -27,7 +27,6 @@ import {
 import Link from "next/link";
 import Head from "next/head";
 import ComoLaundryScreen from "@/components/FranchiseCard";
-import { headers } from "next/headers";
 
 export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
