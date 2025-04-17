@@ -14,6 +14,7 @@ import modelshop from "@/assets/image/modelshop.png";
 import Image from "next/image";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import axios from "axios";
 import machince from "../../public/washer.png";
 import { TableComponent } from "@/components/Table";
 import { useHomeContext } from "@/context/homecontext";
@@ -41,6 +42,61 @@ export default function Home() {
   } = useHomeContext();
 
   const images = [banner1, banner2];
+
+  // Form submission handler function
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = {
+      contactName: (form.elements.namedItem("contactName") as HTMLInputElement)
+        ?.value,
+      topic: (form.elements.namedItem("topic") as HTMLInputElement)?.value,
+      contactMethod: (
+        form.elements.namedItem("contactMethod") as HTMLSelectElement
+      )?.value,
+      email: (form.elements.namedItem("email") as HTMLInputElement)?.value,
+      phoneNumber: (form.elements.namedItem("phoneNumber") as HTMLInputElement)
+        ?.value,
+      province: (form.elements.namedItem("province") as HTMLInputElement)
+        ?.value,
+      lineId: (form.elements.namedItem("lineId") as HTMLInputElement)?.value,
+    };
+
+    // Validate required fields
+    const requiredFields = [
+      "contactName",
+      "topic",
+      "contactMethod",
+      "email",
+      "phoneNumber",
+    ];
+    const missingFields = requiredFields.filter(
+      (field) => !formData[field as keyof typeof formData]
+    );
+
+    if (missingFields.length > 0) {
+      alert("กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://145.223.23.21:3003/form/sendForm",
+        formData
+      );
+
+      if (response.status === 200) {
+        alert("ส่งข้อมูลสำเร็จ เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด");
+        form.reset();
+      } else {
+        alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
+      }
+    } catch (error) {
+      console.error("Error sending form:", error);
+      alert("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
+    }
+  };
 
   return (
     <>
@@ -221,53 +277,63 @@ export default function Home() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="max-w-2xl mx-auto w-full px-4">
               {" "}
-              {/* Reduced max-width from 3xl to 2xl */}
               <div className="flex flex-col gap-y-4 bg-white items-start px-4 md:px-6 lg:px-8 py-8 rounded-xl shadow-lg">
                 {" "}
-                {/* Reduced padding and gap */}
                 <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-blue-900">
                   {" "}
-                  {/* Reduced font sizes */}
                   สนใจลงทุนแฟรนไชส์
                 </h1>
                 <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-blue-900">
                   {" "}
-                  {/* Reduced font sizes */}
                   กรอกแบบฟอร์มให้เจ้าหน้าที่ติดต่อกลับ
                 </h1>
                 {/* Form Fields */}
-                <div className="w-full space-y-3">
-                  {" "}
-                  {/* Reduced spacing */}
+                <form onSubmit={handleFormSubmit} className="w-full space-y-3">
                   <div>
-                    <label className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="contactName"
+                      className="block text-sm font-medium mb-1"
+                    >
                       ชื่อผู้ติดต่อ <span className="text-red-600">*</span>
                     </label>
                     <input
                       id="contactName"
+                      name="contactName"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      หัวข้อในการติดต่อ
+                    <label
+                      htmlFor="topic"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      หัวข้อในการติดต่อ <span className="text-red-600">*</span>
                     </label>
                     <input
                       id="topic"
+                      name="topic"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
-                      ช่องทางที่สะดวกให้ติดต่อกลับ
+                    <label
+                      htmlFor="contactMethod"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      ช่องทางที่สะดวกให้ติดต่อกลับ{" "}
+                      <span className="text-red-600">*</span>
                     </label>
                     <div className="relative">
                       <select
                         id="contactMethod"
+                        name="contactMethod"
                         className="w-full p-2 border border-gray-300 rounded-md appearance-none pr-8"
                         defaultValue=""
+                        required
                       >
                         <option disabled value="">
                           - เลือก -
@@ -294,89 +360,72 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {" "}
-                    {/* Reduced gap */}
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-1"
+                      >
                         อีเมล <span className="text-red-600">*</span>
                       </label>
                       <input
                         id="email"
-                        type="text"
+                        name="email"
+                        type="email"
                         className="w-full p-2 border border-gray-300 rounded-md"
+                        required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label
+                        htmlFor="phoneNumber"
+                        className="block text-sm font-medium mb-1"
+                      >
                         เบอร์โทรศัพท์ <span className="text-red-600">*</span>
                       </label>
                       <input
                         id="phoneNumber"
-                        type="text"
+                        name="phoneNumber"
+                        type="tel"
                         className="w-full p-2 border border-gray-300 rounded-md"
+                        required
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="province"
+                      className="block text-sm font-medium mb-1"
+                    >
                       จังหวัด
                     </label>
                     <input
                       id="province"
+                      name="province"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">
+                    <label
+                      htmlFor="lineId"
+                      className="block text-sm font-medium mb-1"
+                    >
                       Line ID
                     </label>
                     <input
                       id="lineId"
+                      name="lineId"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
-                </div>
-                <button
-                  className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-3xl text-base font-medium mt-2"
-                  onClick={() => {
-                    const formData = {
-                      contactName: (
-                        document.getElementById(
-                          "contactName"
-                        ) as HTMLInputElement
-                      )?.value,
-                      topic: (
-                        document.getElementById("topic") as HTMLInputElement
-                      )?.value,
-                      contactMethod: (
-                        document.getElementById(
-                          "contactMethod"
-                        ) as HTMLSelectElement
-                      )?.value,
-                      email: (
-                        document.getElementById("email") as HTMLInputElement
-                      )?.value,
-                      phoneNumber: (
-                        document.getElementById(
-                          "phoneNumber"
-                        ) as HTMLInputElement
-                      )?.value,
-                      province: (
-                        document.getElementById("province") as HTMLInputElement
-                      )?.value,
-                      lineId: (
-                        document.getElementById("lineId") as HTMLInputElement
-                      )?.value,
-                    };
-
-                    console.log("Form Data:", formData);
-                    // Here you would normally send this data to your API
-                  }}
-                >
-                  ส่งข้อความ
-                </button>
+                  <button
+                    type="submit"
+                    className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-3xl text-base font-medium mt-2"
+                  >
+                    ส่งข้อความ
+                  </button>
+                </form>
               </div>
             </div>
           </div>
