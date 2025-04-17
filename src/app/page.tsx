@@ -181,7 +181,11 @@ export default function Home() {
             </h1>
           </div>
           <div className="w-full flex flex-col justify-center px-4 md:px-8 lg:px-16">
-            <Accordion type="single" collapsible className="flex flex-col gap-y-4">
+            <Accordion
+              type="single"
+              collapsible
+              className="flex flex-col gap-y-4"
+            >
               <AccordionItem value="specifications">
                 <AccordionTrigger className="rounded-xl border-blue-200 text-blue-900 border-2 p-4 w-full">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center w-full">
@@ -206,67 +210,96 @@ export default function Home() {
         {/* Form */}
         <section className="w-full py-10 relative">
           <div className="w-full" style={{ height: "800px" }}>
-            <Image 
-              src={formbg} 
-              alt="Form background" 
+            <Image
+              src={formbg}
+              alt="Form background"
               className="w-full h-full object-cover"
               priority
             />
           </div>
-          
+
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="max-w-2xl mx-auto w-full px-4"> {/* Reduced max-width from 3xl to 2xl */}
-              <div className="flex flex-col gap-y-4 bg-white items-start px-4 md:px-6 lg:px-8 py-8 rounded-xl shadow-lg"> {/* Reduced padding and gap */}
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-blue-900"> {/* Reduced font sizes */}
+            <div className="max-w-2xl mx-auto w-full px-4">
+              {" "}
+              {/* Reduced max-width from 3xl to 2xl */}
+              <div className="flex flex-col gap-y-4 bg-white items-start px-4 md:px-6 lg:px-8 py-8 rounded-xl shadow-lg">
+                {" "}
+                {/* Reduced padding and gap */}
+                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-blue-900">
+                  {" "}
+                  {/* Reduced font sizes */}
                   สนใจลงทุนแฟรนไชส์
                 </h1>
-                <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-blue-900"> {/* Reduced font sizes */}
+                <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-blue-900">
+                  {" "}
+                  {/* Reduced font sizes */}
                   กรอกแบบฟอร์มให้เจ้าหน้าที่ติดต่อกลับ
                 </h1>
-                
                 {/* Form Fields */}
-                <div className="w-full space-y-3"> {/* Reduced spacing */}
+                <div className="w-full space-y-3">
+                  {" "}
+                  {/* Reduced spacing */}
                   <div>
-                    <label className="block text-sm font-medium mb-1">ชื่อผู้ติดต่อ <span className="text-red-600">*</span></label>
+                    <label className="block text-sm font-medium mb-1">
+                      ชื่อผู้ติดต่อ <span className="text-red-600">*</span>
+                    </label>
                     <input
                       id="contactName"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-medium mb-1">หัวข้อในการติดต่อ</label>
+                    <label className="block text-sm font-medium mb-1">
+                      หัวข้อในการติดต่อ
+                    </label>
                     <input
                       id="topic"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-medium mb-1">ช่องทางที่สะดวกให้ติดต่อกลับ</label>
+                    <label className="block text-sm font-medium mb-1">
+                      ช่องทางที่สะดวกให้ติดต่อกลับ
+                    </label>
                     <div className="relative">
-                      <select 
+                      <select
                         id="contactMethod"
                         className="w-full p-2 border border-gray-300 rounded-md appearance-none pr-8"
+                        defaultValue=""
                       >
-                        <option disabled selected>- เลือก -</option>
+                        <option disabled value="">
+                          - เลือก -
+                        </option>
                         <option value="phone">โทรศัพท์</option>
                         <option value="email">อีเมล</option>
                         <option value="line">Line</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <svg
+                          className="w-4 h-4 text-gray-400"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3"> {/* Reduced gap */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {" "}
+                    {/* Reduced gap */}
                     <div>
-                      <label className="block text-sm font-medium mb-1">อีเมล <span className="text-red-600">*</span></label>
+                      <label className="block text-sm font-medium mb-1">
+                        อีเมล <span className="text-red-600">*</span>
+                      </label>
                       <input
                         id="email"
                         type="text"
@@ -274,7 +307,9 @@ export default function Home() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-1">เบอร์โทรศัพท์ <span className="text-red-600">*</span></label>
+                      <label className="block text-sm font-medium mb-1">
+                        เบอร์โทรศัพท์ <span className="text-red-600">*</span>
+                      </label>
                       <input
                         id="phoneNumber"
                         type="text"
@@ -282,18 +317,20 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-medium mb-1">จังหวัด</label>
+                    <label className="block text-sm font-medium mb-1">
+                      จังหวัด
+                    </label>
                     <input
                       id="province"
                       type="text"
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-medium mb-1">Line ID</label>
+                    <label className="block text-sm font-medium mb-1">
+                      Line ID
+                    </label>
                     <input
                       id="lineId"
                       type="text"
@@ -301,21 +338,40 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                
-                <button 
+                <button
                   className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-3xl text-base font-medium mt-2"
                   onClick={() => {
                     const formData = {
-                      contactName: (document.getElementById('contactName') as HTMLInputElement)?.value,
-                      topic: (document.getElementById('topic') as HTMLInputElement)?.value,
-                      contactMethod: (document.getElementById('contactMethod') as HTMLSelectElement)?.value,
-                      email: (document.getElementById('email') as HTMLInputElement)?.value,
-                      phoneNumber: (document.getElementById('phoneNumber') as HTMLInputElement)?.value,
-                      province: (document.getElementById('province') as HTMLInputElement)?.value,
-                      lineId: (document.getElementById('lineId') as HTMLInputElement)?.value
+                      contactName: (
+                        document.getElementById(
+                          "contactName"
+                        ) as HTMLInputElement
+                      )?.value,
+                      topic: (
+                        document.getElementById("topic") as HTMLInputElement
+                      )?.value,
+                      contactMethod: (
+                        document.getElementById(
+                          "contactMethod"
+                        ) as HTMLSelectElement
+                      )?.value,
+                      email: (
+                        document.getElementById("email") as HTMLInputElement
+                      )?.value,
+                      phoneNumber: (
+                        document.getElementById(
+                          "phoneNumber"
+                        ) as HTMLInputElement
+                      )?.value,
+                      province: (
+                        document.getElementById("province") as HTMLInputElement
+                      )?.value,
+                      lineId: (
+                        document.getElementById("lineId") as HTMLInputElement
+                      )?.value,
                     };
-                    
-                    console.log('Form Data:', formData);
+
+                    console.log("Form Data:", formData);
                     // Here you would normally send this data to your API
                   }}
                 >
