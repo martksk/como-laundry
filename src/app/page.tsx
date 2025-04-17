@@ -27,6 +27,7 @@ import {
 import Link from "next/link";
 import Head from "next/head";
 import ComoLaundryScreen from "@/components/FranchiseCard";
+import { headers } from "next/headers";
 
 export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
@@ -81,7 +82,18 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post("/form/sendForm", formData);
+      const response = await axios.post(
+        "https://www.comolaundryth.com:3003/form/sendForm",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            Origin: "https://www.comolaundryth.com",
+          },
+        }
+      );
 
       if (response.status === 200) {
         alert("ส่งข้อมูลสำเร็จ เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด");
