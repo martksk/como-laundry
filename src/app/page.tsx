@@ -82,7 +82,7 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        "www.comolaundryth.com:3003/form/sendForm",
+        "https://www.comolaundryth.com:3003/form/sendForm",
         formData
       );
 
