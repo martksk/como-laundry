@@ -8,3 +8,11 @@ route {
 tls {
     on_demand
 }
+
+www.comolaundryth.com:3003 {
+    reverse_proxy app:3003
+    
+    tls {
+        on_demand
+    }
+}
