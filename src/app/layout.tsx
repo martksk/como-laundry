@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import { HomeProvider } from "@/context/homecontext";
 import Footer from "@/components/Footer";
+import FloatingButtons from "@/components/ui/floatingbuttons";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,10 @@ export default function RootLayout({
           <Navbar />
           <div className="h-[160px]"></div> {/* Spacer for fixed navbar */}
           <main className="jun-content">
-            <HomeProvider>{children}</HomeProvider>
+            <HomeProvider>
+              {children}
+              <FloatingButtons />
+            </HomeProvider>
           </main>
           <footer className="jun-footer jun-footer-h-[160px]">
             <Footer />
