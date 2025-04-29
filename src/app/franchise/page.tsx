@@ -17,7 +17,7 @@ function Franchisepage() {
     <div className="w-full p-6 md:p-10 lg:p-14">
       <div className="flex flex-col justify-center items-center text-center space-y-6 md:space-y-8 lg:space-y-10">
         <h1 className="font-semibold text-2xl md:text-3xl lg:text-4xl">
-          ลูกค้าแฟรนไชน์
+          ลูกค้าแฟรนไชส์
         </h1>
         <div className="mt-6 md:mt-8 lg:mt-10 w-full flex flex-col items-center">
           <h3 className="font-semibold text-xl md:text-2xl lg:text-3xl">
