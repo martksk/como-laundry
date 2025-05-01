@@ -229,6 +229,8 @@ export const franchiseData = [
     namefr: "สาขาลาดพร้าว 122 แยก 18 ข้างอาคาร เอ็ม.แอล.เอ็ม แมนชั่น",
     province: "กรุงเทพมหานคร",
     img: 0,
+    gmap:
+      "https://maps.app.goo.gl/TjKcFXYcFLXETDKn9",
   },
   {
     weight: [17, 27],
@@ -236,6 +238,8 @@ export const franchiseData = [
     namefr: "สาขา ลาดพร้าว 122 (ซอยมหาดไทย)",
     province: "กรุงเทพมหานคร",
     img: 1,
+    gmap:
+      "https://maps.app.goo.gl/TjKcFXYcFLXETDKn9",
   },
   {
     weight: [17, 27],
@@ -243,6 +247,8 @@ export const franchiseData = [
     namefr: "สาขา ถ.สุทธิสาร สามแยก ปากซอย 20 มิถุนา",
     province: "กรุงเทพมหานคร",
     img: 2,
+    gmap:
+      "https://maps.app.goo.gl/Yu75cTRZXpVFVtYP9",
   },
   {
     weight: [17, 27],
@@ -250,6 +256,8 @@ export const franchiseData = [
     namefr: "สาขา รามคำแหง 42",
     province: "กรุงเทพมหานคร",
     img: 3,
+    gmap:
+      "https://maps.app.goo.gl/7nU9yenfMir32qaP8",
   },
   {
     weight: [17, 27],
@@ -257,6 +265,8 @@ export const franchiseData = [
     namefr: "สาขา อ.หลังสวน จ.ชุมพร",
     province: "ชุมพร",
     img: 4,
+    gmap:
+      "https://maps.app.goo.gl/fkSvP9pf8nbMrysp7",
   },
   {
     weight: [17, 27],
@@ -264,6 +274,8 @@ export const franchiseData = [
     namefr: "สาขา ซอยลาดพร้าว 112",
     province: "กรุงเทพมหานคร",
     img: 5,
+    gmap:
+      "https://maps.app.goo.gl/3C4mjmJpDfru4Mzn7",
   },
   {
     weight: [17, 27],
@@ -271,6 +283,8 @@ export const franchiseData = [
     namefr: "สาขา อินทมาระ ซอย 29",
     province: "กรุงเทพมหานคร",
     img: 6,
+    gmap:
+      "https://maps.app.goo.gl/KikMauj17z6hugnz5",
   },
   {
     weight: [17, 27],
@@ -278,6 +292,8 @@ export const franchiseData = [
     namefr: "สาขา กรีนพลาซ่า",
     province: "กรุงเทพมหานคร",
     img: 7,
+    gmap:
+      "https://maps.app.goo.gl/XpPwuGcxCecSUvf46",
   },
   {
     weight: [17, 27],
@@ -285,6 +301,8 @@ export const franchiseData = [
     namefr: "สาขา พหลโยธิน 34",
     province: "กรุงเทพมหานคร",
     img: 8,
+    gmap:
+      "https://maps.app.goo.gl/q9kSfj5GRwZLSaMQ6",
   },
   {
     weight: [17, 27],
@@ -292,6 +310,8 @@ export const franchiseData = [
     namefr: "สาขา หลังสนามกีฬาห้วยขวาง",
     province: "กรุงเทพมหานคร",
     img: 9,
+    gmap:
+      "https://maps.app.goo.gl/YKyLxcF6WP2axVhL9",
   },
   {
     weight: [17, 27],
@@ -299,6 +319,8 @@ export const franchiseData = [
     namefr: "สาขา 20 มิถุนา รัชดา ซอย 18",
     province: "กรุงเทพมหานคร",
     img: 10,
+    gmap:
+      "https://maps.app.goo.gl/ssbKQV2wDqVQWmEHA",
   },
   {
     weight: [17, 27],
@@ -306,6 +328,8 @@ export const franchiseData = [
     namefr: "สาขารัชดา ซอย 3",
     province: "กรุงเทพมหานคร",
     img: 11,
+    gmap:
+      "https://maps.app.goo.gl/8GJjckK4hQk5GNXf7",
   },
   {
     weight: [12, 17, 27],
@@ -313,5 +337,7 @@ export const franchiseData = [
     namefr: "สาขาลาดพร้าว-วังหิน (อยู่ในปั๊ม ESSO)",
     province: "กรุงเทพมหานคร",
     img: 12,
+    gmap:
+      "https://maps.app.goo.gl/tgW2rDPCNK8mFKQ57",
   },
 ];

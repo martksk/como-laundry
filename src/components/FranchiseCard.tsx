@@ -19,7 +19,8 @@ interface LaundryMachine {
   count: number[];
   namefr: string;
   province: string;
-  img: number; // Index to access the images array
+  img: number;
+  gmap: string;
 }
 
 const images = [
@@ -75,14 +76,11 @@ const FranchiseCard: React.FC<FranchiseCardProps> = ({ machines }) => {
               ))}
             </div>
 
-            {/* <div className="flex justify-between mt-auto pt-4">
-                            <button className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded">
-                                ดูเพิ่มเติม
-                            </button>
-                            <button className="bg-red-500 text-white py-2 px-4 rounded">
-                                แผนที่ร้าน
-                            </button>
-                        </div> */}
+            <div className="flex justify-center mt-auto pt-4">
+                <button className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded" onClick={() => window.open(machine.gmap, "_blank")}>
+                  แผนที่ร้าน
+                </button>
+            </div>
           </div>
         </div>
       ))}
