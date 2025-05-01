@@ -28,6 +28,7 @@ type HomeContextType = {
     namefr: string;
     province: string;
     img: number;
+    gmap: string;
   }[];
 };
 
