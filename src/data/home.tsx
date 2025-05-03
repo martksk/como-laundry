@@ -230,7 +230,7 @@ export const franchiseData = [
     province: "กรุงเทพมหานคร",
     img: 0,
     gmap:
-      "https://maps.app.goo.gl/TjKcFXYcFLXETDKn9",
+      "https://maps.app.goo.gl/2y7DfcoUtKMhcEkNA",
   },
   {
     weight: [17, 27],
@@ -257,7 +257,7 @@ export const franchiseData = [
     province: "กรุงเทพมหานคร",
     img: 3,
     gmap:
-      "https://maps.app.goo.gl/7nU9yenfMir32qaP8",
+      "https://g.co/kgs/WG4n1gU",
   },
   {
     weight: [17, 27],
