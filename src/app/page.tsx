@@ -106,7 +106,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Como Laundry</title>
+        <title>Como Laundry 2</title>
       </Head>
       <div className="w-full">
         <div className="w-full mb-20">
