@@ -221,7 +221,7 @@ export default function Home() {
 
         {/* ComoVision */}
         <div className="bg-como3 w-full h-screen bg-cover bg-center flex items-end">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-20 w-full md:h-1/4 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white backdrop-blur-sm bg-opacity-50 w-full md:h-1/4 items-center">
             {comoVision.map((vision, index) => (
               <div
                 key={index}
@@ -430,12 +430,14 @@ export default function Home() {
                       className="w-full p-2 border border-gray-300 rounded-md"
                     />
                   </div>
-                  <button
-                    type="submit"
-                    className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-3xl text-base font-medium mt-2"
-                  >
-                    ส่งข้อความ
-                  </button>
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-3xl text-base font-medium mt-2"
+                    >
+                      ส่งข้อความ
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -458,7 +460,7 @@ export default function Home() {
                 {faqData?.map((faq, index) => (
                   <AccordionItem key={index} value={index.toString()}>
                     <AccordionTrigger className="rounded-xl border-blue-200 text-blue-900 border-2 p-4 w-full">
-                      <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
+                      <h1 className="text-left text-xl md:text-2xl lg:text-3xl font-bold">
                         {faq.question}
                       </h1>
                     </AccordionTrigger>
