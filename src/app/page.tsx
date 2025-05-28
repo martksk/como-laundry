@@ -106,7 +106,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Como Laundry 3</title>
+        <title>Como Laundry</title>
       </Head>
       <div className="w-full">
         <div className="w-full mb-20">
@@ -135,7 +135,7 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center w-full">
               <div className="w-full lg:w-1/2 order-2 lg:order-1">
                 <h1 className="text-2xl md:text-3xl font-semibold text-center text-[#052968]">
-                  MAKE TO BETTER
+                  MAKE TO Butter
                 </h1>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#052968] my-5">
                   FUTURE
