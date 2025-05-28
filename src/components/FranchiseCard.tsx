@@ -49,7 +49,7 @@ const FranchiseCard: React.FC<FranchiseCardProps> = ({ machines }) => {
       {machines.map((machine, index) => (
         <div
           key={index}
-          className="w-[350px] h-[700px] mx-auto bg-white shadow-xl border rounded-2xl flex flex-col"
+          className="xl1500:w-[350px] xl1500:h-[700px] w-[300px] h-[630px] mx-auto bg-white shadow-xl border rounded-2xl flex flex-col"
         >
           <div className="relative w-full h-[300px]">
             <Image
@@ -77,9 +77,12 @@ const FranchiseCard: React.FC<FranchiseCardProps> = ({ machines }) => {
             </div>
 
             <div className="flex justify-center mt-auto pt-4">
-                <button className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded" onClick={() => window.open(machine.gmap, "_blank")}>
-                  แผนที่ร้าน
-                </button>
+              <button
+                className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded"
+                onClick={() => window.open(machine.gmap, "_blank")}
+              >
+                แผนที่ร้าน
+              </button>
             </div>
           </div>
         </div>

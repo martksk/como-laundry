@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xl1500: "1500px",
+      },
       fontFamily: {
         mitr: ["mitr", "sans-serif"], // Rename "sans" to "mitr"
       },
@@ -86,5 +89,4 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-jun-layout"), require("tailwindcss-animate")],
 } satisfies Config;

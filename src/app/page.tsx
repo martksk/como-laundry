@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import Head from "next/head";
-import ComoLaundryScreen from "@/components/FranchiseCard";
+import FranchiseCard from "@/components/FranchiseCard";
 
 export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
@@ -131,16 +131,16 @@ export default function Home() {
         </div>
 
         <section className="w-full">
-          <div className="flex flex-col items-center justify-center h-96 gap-y-6 px-4 md:px-8 lg:px-16 mb-20">
-            <div className="flex items-center">
-              <div className="w-1/2">
-                <h1 className="text-3xl font-semibold text-center text-[#052968]">
+          <div className="flex flex-col items-center justify-center h-auto lg:h-96 gap-y-6 px-4 md:px-8 lg:px-16 mb-20">
+            <div className="flex flex-col lg:flex-row items-center w-full">
+              <div className="w-full lg:w-1/2 order-2 lg:order-1">
+                <h1 className="text-2xl md:text-3xl font-semibold text-center text-[#052968]">
                   MAKE TO BETTER
                 </h1>
-                <h1 className="text-5xl font-bold text-center text-[#052968] my-5">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#052968] my-5">
                   FUTURE
                 </h1>
-                <span className="flex text-center text-base md:text-xl lg:text-2xl text-[#052968]">
+                <span className="flex text-center text-sm md:text-base lg:text-xl xl:text-2xl text-[#052968]">
                   โคโม่ (COMO) มีทั้งหมด 15 สาขา และกำลังขยายเพิ่มเติมอีก 6
                   สาขาทั่วประเทศไทย ทุกสาขาใช้เครื่องซักผ้าจาก Yamamoto
                   แบรนด์เครื่องซักผ้า ซัก-อบ ในเครื่องเดียวที่ดีที่สุดจากญี่ปุ่น
@@ -149,8 +149,14 @@ export default function Home() {
                   พร้อมทั้งยังการันตีคุณภาพความคงทนที่ช่วยสร้างรายได้ที่มั่นคงให้กับเจ้าของแฟรนไชส์
                 </span>
               </div>
-              <div className="flex w-1/2 justify-center">
-                <Image src={modelshop} alt="Image" width={500} height={500} />
+              <div className="flex w-full lg:w-1/2 justify-center order-1 lg:order-2 mb-6 lg:mb-0">
+                <Image
+                  src={modelshop}
+                  alt="Image"
+                  width={500}
+                  height={500}
+                  className="w-full max-w-md lg:max-w-1/2"
+                />
               </div>
             </div>
           </div>
@@ -159,36 +165,36 @@ export default function Home() {
         {/* Franchise */}
         <div className="bg-stone-100">
           <div className="w-full flex justify-center">
-            <h1 className="text-4xl md:text-6xl lg:text-5xl font-bold text-blue-900 mt-20 mb-10">
+            <h1 className="text-4xl text-center font-bold text-blue-900 mt-20 mb-10">
               สาขาต่างๆของ Como Laundry
             </h1>
           </div>
-          <div className="w-full pt-10 py-32 px-40">
+          <div className="w-full pt-10 py-32 px-4 lg:px-40">
             <Carousel
               className="w-full relative"
               opts={{
-                align: "center",
+                align: "start",
                 loop: true,
               }}
             >
-              <div className="max-w-full mx-12">
+              <div className="max-w-full mx-4">
                 {" "}
                 {/* Add margin space for the arrows */}
-                <CarouselContent className="w-full -ml-2">
+                <CarouselContent className="w-full -ml-2 md:-ml-4">
                   {franchiseData.map((franchise, index) => (
                     <CarouselItem
                       key={index}
-                      className="md:basis-1/3 flex-shrink-0"
+                      className="basis-full md:basis-1/2 xl1500:basis-1/3 flex-shrink-0 pl-2 md:pl-4"
                     >
-                      <ComoLaundryScreen machines={[franchise]} />
+                      <FranchiseCard machines={[franchise]} />
                     </CarouselItem>
                   ))}
                 </CarouselContent>
               </div>
 
               {/* Position arrows outside but still within Carousel component */}
-              <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-[5] h-10 w-10" />
-              <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-[5] h-10 w-10" />
+              <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2 z-[5] h-8 w-8 lg:h-10 lg:w-10" />
+              <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2 z-[5] h-8 w-8 lg:h-10 lg:w-10" />
             </Carousel>
           </div>
         </div>
