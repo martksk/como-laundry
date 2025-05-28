@@ -114,7 +114,7 @@ export default function Home() {
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative w-full md:h-96 lg:h-screen">
+                  <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-screen">
                     <Image
                       src={image}
                       alt="Como"
@@ -125,8 +125,8 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 bg-white/30 hover:bg-white/50" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 bg-white/30 hover:bg-white/50" />
+            <CarouselPrevious className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 bg-white/30 hover:bg-white/50" />
+            <CarouselNext className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 bg-white/30 hover:bg-white/50" />
           </Carousel>
         </div>
 
