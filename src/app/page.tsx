@@ -212,7 +212,14 @@ export default function Home() {
 
         {/* Video */}
         <div className="w-full flex justify-center lg:p-28 md:p-16 sm:p-10 p-10  bg-black">
-          <video className="w-full" autoPlay loop muted>
+          <video
+            className="w-full"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          >
             <source src="/video/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
