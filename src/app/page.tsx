@@ -114,12 +114,12 @@ export default function Home() {
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-screen">
+                  <div className="relative w-full h-[300px] md:h-[500px] lg:h-[800px]">
                     <Image
                       src={image}
                       alt="Como"
                       fill
-                      className="object-fill"
+                      className="object-fill aspect-auto"
                     />
                   </div>
                 </CarouselItem>
