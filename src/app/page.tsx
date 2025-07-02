@@ -166,7 +166,7 @@ export default function Home() {
         <div className="bg-stone-100">
           <div className="w-full flex justify-center">
             <h1 className="text-4xl text-center font-bold text-blue-900 mt-20 mb-10">
-              สาขาต่างๆของ Como Laundry
+              สาขาต่างๆของ Como Laundry 1
             </h1>
           </div>
           <div className="w-full pt-10 py-32 px-4 lg:px-40">
