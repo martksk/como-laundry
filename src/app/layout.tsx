@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "@/assets/scss/app.scss";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import { HomeProvider } from "@/context/homecontext";

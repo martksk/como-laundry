@@ -47,9 +47,13 @@ const FranchiseCard: React.FC<FranchiseCardProps> = ({ machines }) => {
   return (
     <>
       {machines.map((machine, index) => (
+        // <div
+        //   key={index}
+        //   className="xl1500:w-[350px] xl1500:h-[700px] w-[300px] h-[630px] mx-auto bg-white shadow-xl border rounded-2xl flex flex-col"
+        // >
         <div
           key={index}
-          className="xl1500:w-[350px] xl1500:h-[700px] w-[300px] h-[630px] mx-auto bg-white shadow-xl border rounded-2xl flex flex-col"
+          className="xl1500:h-[700px] h-[630px] w-full mx-auto bg-white shadow-xl border rounded-2xl flex flex-col"
         >
           <div className="relative w-full h-[300px]">
             <Image
@@ -63,22 +67,26 @@ const FranchiseCard: React.FC<FranchiseCardProps> = ({ machines }) => {
 
           <div className="p-4 flex flex-col flex-grow">
             <div className="text-gray-700 mb-4 px-3">
-              <p>{machine.province}</p>
+              <p className="text-sm md:text-base lg:text-lg">
+                {machine.province}
+              </p>
             </div>
 
             <div className="bg-gray-100 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">{machine.namefr}</h3>
+              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-4">
+                {machine.namefr}
+              </h3>
               {machine.weight.map((weight, weightIndex) => (
                 <div className="flex justify-between mb-4" key={weightIndex}>
-                  <span className="pr-2">{`เครื่องซัก+อบผ้า ขนาด ${weight} kg`}</span>
-                  <span className="pr-2">{`x ${machine.count[weightIndex]}`}</span>
+                  <span className="text-xs md:text-sm lg:text-base">{`เครื่องซัก+อบผ้า ขนาด ${weight} kg`}</span>
+                  <span className="text-xs md:text-sm lg:text-base">{`x ${machine.count[weightIndex]}`}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex justify-center mt-auto pt-4">
               <button
-                className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded"
+                className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded text-sm md:text-base"
                 onClick={() => window.open(machine.gmap, "_blank")}
               >
                 แผนที่ร้าน

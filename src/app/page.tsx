@@ -163,13 +163,13 @@ export default function Home() {
         </section>
 
         {/* Franchise */}
-        <div className="bg-stone-100">
+        <div className="bg-stone-100 franchise-container">
           <div className="w-full flex justify-center">
             <h1 className="text-4xl text-center font-bold text-blue-900 mt-20 mb-10">
-              สาขาต่างๆของ Como Laundry 1
+              สาขาต่างๆของ Como Laundry
             </h1>
           </div>
-          <div className="w-full pt-10 py-32 px-4 lg:px-40">
+          <div className="w-full pt-10 py-32">
             <Carousel
               className="w-full relative"
               opts={{
@@ -180,11 +180,11 @@ export default function Home() {
               <div className="max-w-full mx-4">
                 {" "}
                 {/* Add margin space for the arrows */}
-                <CarouselContent className="w-full -ml-2 md:-ml-4">
+                <CarouselContent className=" -ml-2 md:-ml-4">
                   {franchiseData.map((franchise, index) => (
                     <CarouselItem
                       key={index}
-                      className="basis-full md:basis-1/2 xl1500:basis-1/3 flex-shrink-0 pl-2 md:pl-4"
+                      className="flex-shrink-0 flex-grow-0 sm:basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/3"
                     >
                       <FranchiseCard machines={[franchise]} />
                     </CarouselItem>
@@ -193,8 +193,9 @@ export default function Home() {
               </div>
 
               {/* Position arrows outside but still within Carousel component */}
-              <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2 z-[5] h-8 w-8 lg:h-10 lg:w-10" />
-              <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2 z-[5] h-8 w-8 lg:h-10 lg:w-10" />
+              {/* <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2 z-[5] h-8 w-8 lg:h-10 lg:w-10" /> */}
+              <CarouselPrevious className="w-12 h-12" />
+              <CarouselNext className="w-12 h-12" />
             </Carousel>
           </div>
         </div>

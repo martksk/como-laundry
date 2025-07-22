@@ -1,0 +1,18 @@
+.franchise-container {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+@media (min-width: 375px) and (max-width: 767.9px) {
+  .franchise-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .franchise-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}

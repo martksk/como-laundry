@@ -24,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-responsive-carousel": "^3.2.23",
+    "sass": "^1.89.2",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-jun-layout": "^0.8.0"
