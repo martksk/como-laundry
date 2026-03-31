@@ -1,13 +1,11 @@
-www.comolaundryth.com
-
- route {
-     reverse_proxy app:3000
-     reverse_proxy /form/* app:3003
-     reverse_proxy /* app:3000
-     file_server
- }
-
-
-tls {
-        on_demand
+www.comolaundryth.com, comolaundryth.com {
+    handle /form/* {
+        reverse_proxy como-backend:3003
     }
+
+    handle /* {
+        reverse_proxy como-frontend:3000
+    }
+
+    file_server
+}
