@@ -1,10 +1,10 @@
 www.comolaundryth.com, comolaundryth.com {
     handle /form/* {
-        reverse_proxy como-backend:3003
+        reverse_proxy como-app:3003
     }
 
     handle /* {
-        reverse_proxy como-frontend:3000
+        reverse_proxy nextjs_app:3000
     }
 
     file_server
