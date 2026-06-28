@@ -72,7 +72,7 @@ export default function Home() {
       "phoneNumber",
     ];
     const missingFields = requiredFields.filter(
-      (field) => !formData[field as keyof typeof formData]
+      (field) => !formData[field as keyof typeof formData],
     );
 
     if (missingFields.length > 0) {
@@ -82,13 +82,13 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        "https://www.comolaundryth.com/form/sendForm",
+        "http://localhost:3003/form/sendForm",
         formData,
         {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       if (response.status === 200) {
