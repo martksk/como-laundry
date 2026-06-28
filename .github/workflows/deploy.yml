@@ -17,9 +17,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Debug SSH Agent
-        run: ssh-add -l
-
       - name: Add server to known hosts
         run: |
           mkdir -p ~/.ssh
@@ -31,20 +28,27 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" <<EOF
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" << 'EOF'
             set -euo pipefail
             echo "🚀 Starting deployment..."
-            cd "$PROJECT_PATH"
+
+            # 1. เดินเข้าไปในโฟลเดอร์ลูกเพื่ออัปเดตโค้ด Frontend
             echo "⬇️ Syncing latest changes..."
+            cd "$PROJECT_PATH/como-front"
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
-            echo "🛑 Stopping current containers..."
-            docker compose down --remove-orphans
+
+            # 2. ถอยกลับมาที่โฟลเดอร์ตัวแม่ เพื่อสั่งงาน Docker
+            cd "$PROJECT_PATH"
+
             echo "🧹 Cleaning up old Docker images..."
             docker image prune -f
-            echo "🔨 Building and starting new containers..."
-            docker compose up -d --build
+
+            echo "🔨 Building and starting ONLY frontend container..."
+            # สั่งอัปเดตเฉพาะ Service ที่ชื่อ como-frontend โดยไม่กระทบ Caddy และ Backend
+            docker compose up -d --build como-frontend
+
             echo "📊 Running containers:"
             docker compose ps
           EOF
@@ -55,16 +59,18 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" <<EOF
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" << 'EOF'
             set -euo pipefail
             echo "🔍 Verifying deployment..."
             cd "$PROJECT_PATH"
             echo "📋 Docker Compose status:"
             docker compose ps
-            if [ "$(docker compose ps -q | wc -l)" -gt 0 ]; then
-              echo "✅ Containers are running"
+
+            # เช็กเฉพาะ Service como-frontend ว่ายังทำงานอยู่ไหม
+            if [ "$(docker compose ps -q como-frontend | wc -l)" -gt 0 ]; then
+              echo "✅ Frontend container is running"
             else
-              echo "❌ No containers running"
+              echo "❌ Frontend container is not running"
               exit 1
             fi
           EOF
