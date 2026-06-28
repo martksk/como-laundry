@@ -29,9 +29,7 @@ services:
       - como-network
 
 networks:
-  como-network:
-    name: como-network
-    external: true
+  como-network: {}
 
 volumes:
   caddy_data:
