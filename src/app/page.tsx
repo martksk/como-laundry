@@ -99,7 +99,18 @@ export default function Home() {
       }
     } catch (error) {
       console.error("Error sending form:", error);
-      alert("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
+      if (axios.isAxiosError(error) && error.response) {
+        // Safe access to error.response.data
+        const data = error.response.data as Record<string, unknown> | null | undefined;
+        const errorMsg = (data && typeof data === "object" && typeof data.msg === "string") ? data.msg : "";
+        if (errorMsg === "User already exists") {
+          alert("ข้อมูลผู้ใช้นี้ (อีเมล/ชื่อ/เบอร์โทร) มีอยู่ในระบบแล้ว");
+        } else {
+          alert("เกิดข้อผิดพลาดจากเซิร์ฟเวอร์ กรุณาลองใหม่อีกครั้ง");
+        }
+      } else {
+        alert("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
+      }
     }
   };
 

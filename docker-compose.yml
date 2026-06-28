@@ -11,6 +11,8 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    networks:
+      - como-network
 
   caddy:
     image: caddy:latest
@@ -25,6 +27,13 @@ services:
       - caddy_config:/config
     depends_on:
       - app
+    networks:
+      - como-network
+
+networks:
+  como-network:
+    name: como-network
+    external: true
 
 volumes:
   caddy_data:
