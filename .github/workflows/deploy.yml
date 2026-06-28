@@ -30,22 +30,18 @@ jobs:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} << 'EOF'
             echo "🚀 Starting deployment..."
             cd ${{ secrets.PROJECT_PATH }}
-            echo "📁 Current directory: $(pwd)"
-            echo "📋 Current git status:"
-            git status --porcelain
-            echo "⬇️ Pulling latest changes..."
-            git pull origin main
+            echo "⬇️ Syncing latest changes..."
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
             echo "🛑 Stopping current containers..."
-            docker compose down
+            docker compose down --remove-orphans
             echo "🧹 Cleaning up old Docker images..."
             docker image prune -f
             echo "🔨 Building and starting new containers..."
             docker compose up -d --build
-            echo "⏳ Waiting for containers to start..."
-            sleep 15
             echo "📊 Running containers:"
             docker compose ps
-            echo "✅ Deployment completed successfully!"
           EOF
 
       - name: Verify deployment
