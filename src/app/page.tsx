@@ -72,7 +72,7 @@ export default function Home() {
       "phoneNumber",
     ];
     const missingFields = requiredFields.filter(
-      (field) => !formData[field as keyof typeof formData]
+      (field) => !formData[field as keyof typeof formData],
     );
 
     if (missingFields.length > 0) {
@@ -81,15 +81,11 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post(
-        "https://www.comolaundryth.com/form/sendForm",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("/form/sendForm", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 200) {
         alert("ส่งข้อมูลสำเร็จ เจ้าหน้าที่จะติดต่อกลับโดยเร็วที่สุด");
@@ -101,8 +97,14 @@ export default function Home() {
       console.error("Error sending form:", error);
       if (axios.isAxiosError(error) && error.response) {
         // Safe access to error.response.data
-        const data = error.response.data as Record<string, unknown> | null | undefined;
-        const errorMsg = (data && typeof data === "object" && typeof data.msg === "string") ? data.msg : "";
+        const data = error.response.data as
+          | Record<string, unknown>
+          | null
+          | undefined;
+        const errorMsg =
+          data && typeof data === "object" && typeof data.msg === "string"
+            ? data.msg
+            : "";
         if (errorMsg === "User already exists") {
           alert("ข้อมูลผู้ใช้นี้ (อีเมล/ชื่อ/เบอร์โทร) มีอยู่ในระบบแล้ว");
         } else {
