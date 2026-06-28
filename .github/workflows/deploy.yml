@@ -26,10 +26,15 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to server
+        env:
+          HOST: ${{ secrets.HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} << 'EOF'
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" <<EOF
+            set -euo pipefail
             echo "🚀 Starting deployment..."
-            cd ${{ secrets.PROJECT_PATH }}
+            cd "$PROJECT_PATH"
             echo "⬇️ Syncing latest changes..."
             git fetch origin main
             git reset --hard origin/main
@@ -45,13 +50,18 @@ jobs:
           EOF
 
       - name: Verify deployment
+        env:
+          HOST: ${{ secrets.HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
-          echo "🔍 Verifying deployment..."
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} << 'EOF'
-            cd ${{ secrets.PROJECT_PATH }}
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "$SSH_USER@$HOST" "PROJECT_PATH='$PROJECT_PATH' bash -s" <<EOF
+            set -euo pipefail
+            echo "🔍 Verifying deployment..."
+            cd "$PROJECT_PATH"
             echo "📋 Docker Compose status:"
             docker compose ps
-            if [ $(docker compose ps -q | wc -l) -gt 0 ]; then
+            if [ "$(docker compose ps -q | wc -l)" -gt 0 ]; then
               echo "✅ Containers are running"
             else
               echo "❌ No containers running"
