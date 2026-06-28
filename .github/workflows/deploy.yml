@@ -36,15 +36,15 @@ jobs:
             echo "⬇️ Pulling latest changes..."
             git pull origin main
             echo "🛑 Stopping current containers..."
-            docker-compose down
+            docker compose down
             echo "🧹 Cleaning up old Docker images..."
             docker image prune -f
             echo "🔨 Building and starting new containers..."
-            docker-compose up -d --build
+            docker compose up -d --build
             echo "⏳ Waiting for containers to start..."
             sleep 15
             echo "📊 Running containers:"
-            docker-compose ps
+            docker compose ps
             echo "✅ Deployment completed successfully!"
           EOF
 
@@ -54,8 +54,8 @@ jobs:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST }} << 'EOF'
             cd ${{ secrets.PROJECT_PATH }}
             echo "📋 Docker Compose status:"
-            docker-compose ps
-            if [ $(docker-compose ps -q | wc -l) -gt 0 ]; then
+            docker compose ps
+            if [ $(docker compose ps -q | wc -l) -gt 0 ]; then
               echo "✅ Containers are running"
             else
               echo "❌ No containers running"
